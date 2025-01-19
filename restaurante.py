@@ -15,13 +15,17 @@ class Restaurante:
     def listar_restaurantes(cls):
         print(f'\n| {'Nome:':<30} | {'Categoria:':<30} | {'Status:':<30}')
         for restaurante in cls.restaurantes:
-            print(f'| {restaurante.nome:<30} | {restaurante.categoria:<30} | {restaurante.status:<30}') 
+            print(f'| {restaurante._nome:<30} | {restaurante._categoria:<30} | {restaurante.status:<30}') 
 
     @property
     def status(self):
         return 'Aberto' if self._status else 'Fechado'
 
+    def alternar_status(self):
+        self._status = not self._status
+
 restaurante_labu = Restaurante('podrão do Labu', 'Podrões')
+restaurante_labu.alternar_status()
 restaurante_candinho = Restaurante('pastelaria do Candinho', 'Pastéis')
 
 Restaurante.listar_restaurantes()
