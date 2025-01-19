@@ -1,3 +1,5 @@
+from modelos.avaliacao import Avaliacao
+
 class Restaurante:
 
     restaurantes = []
@@ -6,6 +8,7 @@ class Restaurante:
         self._nome = nome.title() # Método title() deixa a primeira letra de cada palavra maiúscula
         self._categoria = categoria.upper() # Método upper() deixa todas as letras maiúsculas
         self._status = False
+        self._avaliacao = []
         Restaurante.restaurantes.append(self)
 
     def __str__(self):
@@ -23,10 +26,8 @@ class Restaurante:
 
     def alternar_status(self):
         self._status = not self._status
-
-restaurante_labu = Restaurante('podrão do Labu', 'Podrões')
-restaurante_labu.alternar_status()
-restaurante_candinho = Restaurante('pastelaria do Candinho', 'Pastéis')
-
-Restaurante.listar_restaurantes()
+    
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente, nota)
+        self._avaliacao.append(avaliacao)
 
